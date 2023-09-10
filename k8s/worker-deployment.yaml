@@ -10,8 +10,13 @@ spec:
   template:
     metadata:
       labels:
-        component: worker
+        component: worker # this is the label that the selector is looking for
     spec:
       containers:
-        - name: worker
+        - name: worker # this is the name of the container
           image: stephengrider/multi-worker
+          env:
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service # this is the name of the cluster ip service
+            - name: REDIS_PORT
+              value: "6379" # this is the default port that redis is running on
