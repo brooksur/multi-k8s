@@ -1,0 +1,8 @@
+sudo: required # is required to use docker service in travis
+services:
+  - docker # install docker
+before_install:
+  - curl https://sdk.cloud.google.com | bash > /dev/null; # download google cloud sdk
+  - source $HOME/google-cloud-sdk/path.bash.inc # add gcloud to $PATH
+  - gcloud components update kubectl # install kubectl
+  - gcloud auth activate-service-account --key-file service-account.json # authenticate with google cloud
