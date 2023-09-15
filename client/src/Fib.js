@@ -61,6 +61,7 @@ class Fib extends Component {
   render() {
     return (
       <div>
+        <h2>This is just some text to test deployments</h2>
         <form onSubmit={this.handleSubmit}>
           <label>Enter your index:</label>
           <input
