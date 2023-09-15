@@ -1,6 +1,10 @@
 sudo: required # is required to use docker service in travis
 services:
   - docker # install docker
+env:
+  global:
+    - SHA=$(git rev-parse HEAD) # get current commit SHA
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1 # disable prompts from google cloud sdk
 before_install:
   - openssl aes-256-cbc -K $encrypted_ea0ac622ba29_key -iv $encrypted_ea0ac622ba29_iv -in multi-k8s-gcloud-auth.json.enc -out multi-k8s-gcloud-auth.json -d
   - curl https://sdk.cloud.google.com | bash > /dev/null; # download google cloud sdk
